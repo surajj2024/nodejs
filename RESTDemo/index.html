@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" id="email">
+        <input type="text" id="password">
+        <button id="submit">submit</button>
+    </form>
+    <button id="delete">delete</button>
+</body>
+
+</html>
+<script>
+    let email = document.getElementById('email');
+    let password = document.getElementById("password")
+
+    document.getElementById("submit").addEventListener('click', async function (e) {
+        e.preventDefault()
+        try {
+            let res = await fetch("http://localhost:3000/posts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email.value,
+                    password: password.value
+                })
+            })
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    async function fetchData() {
+        try {
+            let res = await fetch("http://localhost:3000/posts")
+            res = await res.json();
+            console.log(res);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    fetchData()
+
+</script>

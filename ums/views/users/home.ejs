@@ -1,0 +1,26 @@
+<% include('../layouts/header.ejs') %>
+
+
+
+<h3>Hello, <%= user.name %> </h3>
+
+<table width="50%">
+    <tr>
+        <td><img src="userImages/<%= user.image %>" alt="<%= user.image %>" width="100px" height="100px"></td>
+    </tr>
+    <tr>
+        <td>Email ID</td>
+        <td> <%= user.email %> </td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td> <%= user.mobile %> </td>
+    </tr>
+</table>
+
+
+<a href="/edit?id=<%= user._id%>">Edit</a>
+<a href="/logout">Log Out</a>
+
+
+<% include('../layouts/footer.ejs') %>
